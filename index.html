@@ -3,569 +3,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>TTC Muhanga ICT Holiday Camp | Premium CPD for Future Teachers</title>
+    <title>TTC Muhanga ICT Camp | Future-Ready Teachers</title>
     
-    <!-- Fonts & Icons -->
+    <!-- Google Fonts & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Three.js for 3D Background -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+            }
+        }
+    </script>
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] },
                     animation: {
                         'fade-up': 'fadeUp 0.7s ease-out forwards',
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow-pulse': 'glowPulse 2s ease-in-out infinite',
+                        'glow-pulse': 'glowPulse 3s ease-in-out infinite',
                     },
                     keyframes: {
-                        fadeUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        glowPulse: {
-                            '0%, 100%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.2)' },
-                            '50%': { boxShadow: '0 0 40px rgba(99, 102, 241, 0.5)' },
-                        },
-                    },
+                        fadeUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        glowPulse: { '0%,100%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.2)' }, '50%': { boxShadow: '0 0 40px rgba(139, 92, 246, 0.5)' } },
+                    }
                 }
             }
         }
     </script>
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background: linear-gradient(135deg, #0a0e27 0%, #121632 50%, #0a0e27 100%);
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .glass-premium {
-            background: rgba(15, 20, 45, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 32px;
-        }
-        
-        .glass-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 28px;
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        }
-        
-        .glass-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(99, 102, 241, 0.4);
-            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.5);
-        }
-        
-        .btn-premium {
-            background: linear-gradient(105deg, #4f46e5 0%, #7c3aed 100%);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
-        }
-        
-        .btn-premium:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.5);
-        }
-        
-        .btn-outline-premium {
-            border: 1.5px solid rgba(99, 102, 241, 0.6);
-            background: transparent;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-premium:hover {
-            background: rgba(99, 102, 241, 0.2);
-            border-color: #6366f1;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 50%, #c7d2fe 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .input-premium {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            transition: all 0.3s;
-            color: white;
-        }
-        
-        .input-premium:focus {
-            outline: none;
-            border-color: #6366f1;
-            background: rgba(255,255,255,0.08);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-        }
-        
-        .radio-card {
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .radio-card input:checked + div {
-            border-color: #6366f1;
-            background: rgba(99, 102, 241, 0.15);
-        }
-        
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-        
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
-        
-        .shimmer {
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-            background-size: 1000px 100%;
-            animation: shimmer 3s infinite;
-        }
+        body { margin: 0; overflow-x: hidden; font-family: 'Inter', sans-serif; background-color: #050510; }
+        canvas { display: block; position: fixed; top: 0; left: 0; z-index: 0; width: 100%; height: 100%; }
+        .relative-z { position: relative; z-index: 10; }
+        .glass-premium { background: rgba(15, 12, 35, 0.65); backdrop-filter: blur(12px); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 32px; }
+        .glass-card { background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 28px; transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1); }
+        .glass-card:hover { transform: translateY(-6px); border-color: rgba(139, 92, 246, 0.6); box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5); }
+        .btn-premium { background: linear-gradient(105deg, #8b5cf6 0%, #6d28d9 100%); transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3); }
+        .btn-premium:hover { transform: scale(1.02); box-shadow: 0 8px 25px rgba(139, 92, 246, 0.5); }
+        .gradient-text { background: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #e879f9 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .input-premium { background: rgba(255,255,255,0.05); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 20px; transition: all 0.3s; color: white; }
+        .input-premium:focus { outline: none; border-color: #a855f7; background: rgba(255,255,255,0.1); box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2); }
+        .payment-logo { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; transition: 0.2s; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1a0b2e; }
+        ::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 10px; }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body>
 
-    <!-- Animated Background Elements -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-indigo-600/20 rounded-full blur-3xl animate-float"></div>
-        <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl"></div>
-    </div>
-
+    <!-- 3D Background will be injected here by Three.js -->
+    
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-premium mx-4 mt-4 px-6 py-3">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-premium mx-4 mt-4 px-6 py-3 relative-z">
         <div class="max-w-6xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl btn-premium flex items-center justify-center">
-                    <i class="fas fa-graduation-cap text-white text-sm"></i>
+                <div class="w-10 h-10 rounded-xl btn-premium flex items-center justify-center animate-glow-pulse">
+                    <i class="fas fa-laptop-code text-white text-sm"></i>
                 </div>
                 <div>
                     <p class="font-bold text-sm text-white">TTC MUHANGA</p>
-                    <p class="text-[10px] text-gray-400">ICT HOLIDAY CAMP</p>
+                    <p class="text-[10px] text-purple-300">ICT HOLIDAY CAMP</p>
                 </div>
             </div>
             <div class="hidden md:flex gap-8">
-                <a href="#program" class="text-gray-300 hover:text-white transition text-sm font-medium">Program</a>
-                <a href="#register" class="text-gray-300 hover:text-white transition text-sm font-medium">Register</a>
-                <a href="#pricing" class="text-gray-300 hover:text-white transition text-sm font-medium">Pricing</a>
-                <a href="#faq" class="text-gray-300 hover:text-white transition text-sm font-medium">FAQ</a>
+                <a href="#program" class="text-gray-300 hover:text-purple-300 transition text-sm font-medium">Program</a>
+                <a href="#register" class="text-gray-300 hover:text-purple-300 transition text-sm font-medium">Register</a>
+                <a href="#why-join" class="text-gray-300 hover:text-purple-300 transition text-sm font-medium">Why Join?</a>
+                <a href="#faq" class="text-gray-300 hover:text-purple-300 transition text-sm font-medium">FAQ</a>
             </div>
             <a href="#register" class="btn-premium px-5 py-2 rounded-full text-sm font-semibold text-white">
-                <i class="fas fa-user-plus mr-2"></i>Join Now
+                <i class="fas fa-rocket mr-2"></i>Join Now
             </a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 px-4 z-10">
+    <section class="relative pt-32 pb-20 px-4 z-10 relative-z">
         <div class="max-w-5xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-6 animate-fade-up">
-                <i class="fas fa-calendar-alt text-indigo-400 text-xs"></i>
-                <span class="text-indigo-300 text-xs font-medium">Limited Spots • July 2025</span>
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6 animate-fade-up">
+                <i class="fas fa-microchip text-purple-400 text-xs"></i>
+                <span class="text-purple-300 text-xs font-medium">#FutureTeacherTech • July 2025</span>
             </div>
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-5 animate-fade-up" style="animation-delay: 0.1s;">
-                <span class="text-white">TTC MUHANGA</span><br>
-                <span class="gradient-text">ICT HOLIDAY CAMP</span>
+                <span class="text-white">Master ICT,</span><br>
+                <span class="gradient-text">Transform Your Classroom</span>
             </h1>
-            <p class="text-gray-300 text-lg md:text-xl mb-4 animate-fade-up" style="animation-delay: 0.2s;">Practical Digital Skills for Future Teachers</p>
+            <p class="text-gray-300 text-lg md:text-xl mb-4 animate-fade-up" style="animation-delay: 0.2s;">Practical digital skills for TTC Muhanga's future educators</p>
             <div class="flex flex-wrap justify-center gap-4 mb-8 animate-fade-up" style="animation-delay: 0.3s;">
-                <div class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full">
-                    <i class="fas fa-clock text-indigo-400 text-sm"></i>
-                    <span class="text-gray-300 text-sm">Mon–Fri | 13:00–14:00</span>
-                </div>
-                <div class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full">
-                    <i class="fas fa-mobile-alt text-indigo-400 text-sm"></i>
-                    <span class="text-gray-300 text-sm">1 Hour/Day</span>
-                </div>
-                <div class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full">
-                    <i class="fas fa-chalkboard-teacher text-indigo-400 text-sm"></i>
-                    <span class="text-gray-300 text-sm">Year 1 & 2 Only</span>
-                </div>
+                <div class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full"><i class="fas fa-clock text-purple-400 text-sm"></i><span class="text-gray-300 text-sm">Mon–Fri | 13:00–14:00</span></div>
+                <div class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full"><i class="fas fa-mobile-alt text-purple-400 text-sm"></i><span class="text-gray-300 text-sm">1 Hour/Day • 1 Month</span></div>
+                <div class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full"><i class="fas fa-users text-purple-400 text-sm"></i><span class="text-gray-300 text-sm">Year 1 & 2 Only</span></div>
             </div>
             <div class="flex flex-wrap justify-center gap-3 animate-fade-up" style="animation-delay: 0.4s;">
-                <a href="#register" class="btn-premium px-8 py-3 rounded-full font-semibold text-white">
-                    <i class="fas fa-pen-alt mr-2"></i>Register Now
-                </a>
-                <a href="#program" class="btn-outline-premium px-8 py-3 rounded-full font-semibold text-white">
-                    <i class="fas fa-book-open mr-2"></i>View Program
-                </a>
+                <a href="#register" class="btn-premium px-8 py-3 rounded-full font-semibold text-white"><i class="fas fa-pen-alt mr-2"></i>Claim Your Spot</a>
+                <a href="#program" class="btn-outline-premium px-8 py-3 rounded-full font-semibold text-white border border-purple-500/60 hover:bg-purple-500/20"><i class="fas fa-play-circle mr-2"></i>See What You'll Learn</a>
             </div>
         </div>
     </section>
 
-    <!-- Stats Bar -->
-    <div class="max-w-5xl mx-auto px-4 mb-16 z-10 relative">
+    <!-- Stats / Social Proof -->
+    <div class="max-w-5xl mx-auto px-4 mb-16 z-10 relative-z">
         <div class="glass-premium rounded-2xl p-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div>
-                <p class="text-2xl font-bold gradient-text">20+</p>
-                <p class="text-gray-400 text-xs">Hours Training</p>
-            </div>
-            <div>
-                <p class="text-2xl font-bold gradient-text">8+</p>
-                <p class="text-gray-400 text-xs">Digital Tools</p>
-            </div>
-            <div>
-                <p class="text-2xl font-bold gradient-text">500Frw</p>
-                <p class="text-gray-400 text-xs">Per Week</p>
-            </div>
-            <div>
-                <p class="text-2xl font-bold gradient-text">✅</p>
-                <p class="text-gray-400 text-xs">Certificate</p>
-            </div>
+            <div><p class="text-2xl font-bold gradient-text">20+</p><p class="text-gray-400 text-xs">Hands-on Hours</p></div>
+            <div><p class="text-2xl font-bold gradient-text">10+</p><p class="text-gray-400 text-xs">Digital Tools</p></div>
+            <div><p class="text-2xl font-bold gradient-text">500Frw</p><p class="text-gray-400 text-xs">Weekly Investment</p></div>
+            <div><p class="text-2xl font-bold gradient-text">🚀</p><p class="text-gray-400 text-xs">Classroom Ready</p></div>
         </div>
     </div>
 
-    <!-- Program Section -->
-    <section id="program" class="max-w-6xl mx-auto px-4 py-16 z-10 relative">
+    <!-- What You'll Learn (Program) -->
+    <section id="program" class="max-w-6xl mx-auto px-4 py-16 z-10 relative-z">
         <div class="text-center mb-12">
-            <p class="text-indigo-400 text-sm font-semibold uppercase tracking-wide mb-2">Curriculum</p>
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">What You'll Master</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto">4 weeks of hands-on, practical ICT training designed for future teachers</p>
+            <p class="text-purple-400 text-sm font-semibold uppercase tracking-wide mb-2">Curriculum</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">From Smartphone to Smart Teacher</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">4 weeks. Real skills. No fluff.</p>
         </div>
-        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div class="glass-card p-6">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center mb-4">
-                    <i class="fas fa-mobile-alt text-2xl text-blue-400"></i>
-                </div>
-                <h3 class="text-lg font-semibold text-white mb-2">Week 1</h3>
-                <p class="text-indigo-300 text-sm font-medium mb-2">Phone & PC Basics</p>
-                <p class="text-gray-400 text-xs">File management, settings, Google apps, typing, backups</p>
-            </div>
-            
-            <div class="glass-card p-6">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-600/20 flex items-center justify-center mb-4">
-                    <i class="fab fa-google text-2xl text-green-400"></i>
-                </div>
-                <h3 class="text-lg font-semibold text-white mb-2">Week 2</h3>
-                <p class="text-indigo-300 text-sm font-medium mb-2">Google Classroom & Meet</p>
-                <p class="text-gray-400 text-xs">Create classes, assignments, live teaching, screen sharing</p>
-            </div>
-            
-            <div class="glass-card p-6">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-purple-600/20 flex items-center justify-center mb-4">
-                    <i class="fas fa-chart-line text-2xl text-purple-400"></i>
-                </div>
-                <h3 class="text-lg font-semibold text-white mb-2">Week 3</h3>
-                <p class="text-indigo-300 text-sm font-medium mb-2">Forms & Internet Skills</p>
-                <p class="text-gray-400 text-xs">Create quizzes, analyze data, safe browsing, email</p>
-            </div>
-            
-            <div class="glass-card p-6">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500/20 to-pink-600/20 flex items-center justify-center mb-4">
-                    <i class="fas fa-palette text-2xl text-pink-400"></i>
-                </div>
-                <h3 class="text-lg font-semibold text-white mb-2">Week 4</h3>
-                <p class="text-indigo-300 text-sm font-medium mb-2">Canva & Digital Teaching</p>
-                <p class="text-gray-400 text-xs">Design posters, teaching materials, final project</p>
-            </div>
+            <div class="glass-card p-6"><div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-purple-600/20 flex items-center justify-center mb-4"><i class="fas fa-mobile-alt text-2xl text-purple-400"></i></div><h3 class="text-lg font-semibold text-white mb-2">Week 1: Phone Mastery</h3><p class="text-gray-400 text-sm">File management, settings, Google apps, typing like a pro.</p></div>
+            <div class="glass-card p-6"><div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-indigo-600/20 flex items-center justify-center mb-4"><i class="fab fa-google text-2xl text-indigo-400"></i></div><h3 class="text-lg font-semibold text-white mb-2">Week 2: Google Classroom</h3><p class="text-gray-400 text-sm">Create classes, assignments, and go paperless.</p></div>
+            <div class="glass-card p-6"><div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500/20 to-pink-600/20 flex items-center justify-center mb-4"><i class="fas fa-video text-2xl text-pink-400"></i></div><h3 class="text-lg font-semibold text-white mb-2">Week 3: Virtual Teaching</h3><p class="text-gray-400 text-sm">Google Meet, Forms, quizzes, and online assessments.</p></div>
+            <div class="glass-card p-6"><div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-fuchsia-500/20 to-fuchsia-600/20 flex items-center justify-center mb-4"><i class="fas fa-palette text-2xl text-fuchsia-400"></i></div><h3 class="text-lg font-semibold text-white mb-2">Week 4: Create & Engage</h3><p class="text-gray-400 text-sm">Canva design, WhatsApp for education, digital resources.</p></div>
         </div>
     </section>
 
-    <!-- Registration & Payment Section -->
-    <section id="register" class="max-w-5xl mx-auto px-4 py-16 z-10 relative">
+    <!-- Registration + ICT Questions -->
+    <section id="register" class="max-w-5xl mx-auto px-4 py-16 z-10 relative-z">
         <div class="glass-premium rounded-3xl p-6 md:p-10">
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Left: Registration Form -->
+                <!-- Left: Form -->
                 <div>
-                    <h2 class="text-2xl font-bold text-white mb-2">Register Now</h2>
-                    <p class="text-gray-400 text-sm mb-6">Fill in your details to secure your spot</p>
-                    
+                    <h2 class="text-2xl font-bold text-white mb-2">🚀 Reserve Your Spot</h2>
+                    <p class="text-gray-400 text-sm mb-6">Fill in your details and tell us about your ICT journey.</p>
                     <form id="regForm" class="space-y-4">
-                        <div>
-                            <label class="text-gray-300 text-sm mb-1 block">Full Names *</label>
-                            <input type="text" id="fullname" required class="input-premium w-full px-4 py-3 text-sm">
-                        </div>
-                        
+                        <div><label class="text-gray-300 text-sm mb-1 block">Full Names *</label><input type="text" id="fullname" required class="input-premium w-full px-4 py-3 text-sm"></div>
                         <div class="grid grid-cols-2 gap-3">
-                            <div>
-                                <label class="text-gray-300 text-sm mb-1 block">Phone *</label>
-                                <input type="tel" id="phone" required class="input-premium w-full px-4 py-3 text-sm">
-                            </div>
-                            <div>
-                                <label class="text-gray-300 text-sm mb-1 block">Year *</label>
-                                <select id="year" required class="input-premium w-full px-4 py-3 text-sm">
-                                    <option value="" class="bg-gray-900">Select</option>
-                                    <option value="Y1">Year 1</option>
-                                    <option value="Y2">Year 2</option>
-                                </select>
-                            </div>
+                            <div><label class="text-gray-300 text-sm mb-1 block">Phone *</label><input type="tel" id="phone" required class="input-premium w-full px-4 py-3 text-sm"></div>
+                            <div><label class="text-gray-300 text-sm mb-1 block">Year *</label><select id="year" required class="input-premium w-full px-4 py-3 text-sm"><option value="">Select</option><option value="Year 1">Year 1</option><option value="Year 2">Year 2</option></select></div>
+                        </div>
+                        <div><label class="text-gray-300 text-sm mb-1 block">Home Address *</label><input type="text" id="address" required class="input-premium w-full px-4 py-3 text-sm"></div>
+                        
+                        <!-- ICT Questions Section -->
+                        <div class="border-t border-white/10 pt-4 mt-2">
+                            <p class="text-purple-300 text-sm font-semibold mb-3"><i class="fas fa-brain mr-2"></i>A Few Quick Questions (to personalize your camp)</p>
+                            <div class="mb-3"><label class="text-gray-300 text-sm mb-1 block">What's your biggest ICT challenge right now?</label><select id="ictChallenge" class="input-premium w-full px-4 py-3 text-sm"><option value="Typing & documents">Typing & documents</option><option value="Using Google tools">Using Google tools</option><option value="Creating quizzes/forms">Creating quizzes/forms</option><option value="Designing teaching materials">Designing teaching materials</option><option value="Everything feels hard">Everything feels hard</option></select></div>
+                            <div class="mb-3"><label class="text-gray-300 text-sm mb-1 block">How do you want to improve most during this camp?</label><textarea id="improvementGoal" rows="2" class="input-premium w-full px-4 py-3 text-sm" placeholder="Example: I want to create my first Google Classroom and make digital exams..."></textarea></div>
                         </div>
                         
-                        <div>
-                            <label class="text-gray-300 text-sm mb-1 block">Home Address *</label>
-                            <input type="text" id="address" required class="input-premium w-full px-4 py-3 text-sm">
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-3">
-                            <div>
-                                <label class="text-gray-300 text-sm mb-1 block">ICT Interest</label>
-                                <select id="interest" class="input-premium w-full px-4 py-3 text-sm">
-                                    <option value="Phone Basics">Phone Basics</option>
-                                    <option value="Google Classroom">Google Classroom</option>
-                                    <option value="Canva">Canva Design</option>
-                                    <option value="All Topics">All Topics</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="text-gray-300 text-sm mb-1 block">Referred By</label>
-                                <select id="heard" class="input-premium w-full px-4 py-3 text-sm">
-                                    <option value="Friend">Friend</option>
-                                    <option value="WhatsApp">WhatsApp</option>
-                                    <option value="Teacher">Teacher</option>
-                                    <option value="Poster">Poster</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label class="text-gray-300 text-sm mb-2 block">Payment Plan *</label>
-                            <div class="grid grid-cols-2 gap-3">
-                                <label class="radio-card">
-                                    <input type="radio" name="plan" value="weekly" class="hidden" checked>
-                                    <div class="border border-white/10 rounded-xl p-3 text-center cursor-pointer transition hover:border-indigo-500">
-                                        <p class="text-xl font-bold text-white">500 Frw</p>
-                                        <p class="text-gray-400 text-xs">Per Week</p>
-                                    </div>
-                                </label>
-                                <label class="radio-card">
-                                    <input type="radio" name="plan" value="monthly" class="hidden">
-                                    <div class="border border-white/10 rounded-xl p-3 text-center cursor-pointer transition hover:border-indigo-500">
-                                        <p class="text-xl font-bold text-indigo-400">2,000 Frw</p>
-                                        <p class="text-gray-400 text-xs">Full Month</p>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label class="text-gray-300 text-sm mb-2 block">Payment Method *</label>
-                            <div class="grid grid-cols-2 gap-2">
-                                <label class="radio-card">
-                                    <input type="radio" name="payment" value="MoMo" class="hidden" checked>
-                                    <div class="border border-white/10 rounded-xl p-2 text-center cursor-pointer flex items-center justify-center gap-2">
-                                        <i class="fas fa-mobile-alt text-indigo-400"></i>
-                                        <span class="text-sm">MoMo</span>
-                                    </div>
-                                </label>
-                                <label class="radio-card">
-                                    <input type="radio" name="payment" value="Cash" class="hidden">
-                                    <div class="border border-white/10 rounded-xl p-2 text-center cursor-pointer flex items-center justify-center gap-2">
-                                        <i class="fas fa-money-bill text-green-400"></i>
-                                        <span class="text-sm">Cash</span>
-                                    </div>
-                                </label>
-                                <label class="radio-card">
-                                    <input type="radio" name="payment" value="PayPal" class="hidden">
-                                    <div class="border border-white/10 rounded-xl p-2 text-center cursor-pointer flex items-center justify-center gap-2">
-                                        <i class="fab fa-paypal text-blue-400"></i>
-                                        <span class="text-sm">PayPal</span>
-                                    </div>
-                                </label>
-                                <label class="radio-card">
-                                    <input type="radio" name="payment" value="Online" class="hidden">
-                                    <div class="border border-white/10 rounded-xl p-2 text-center cursor-pointer flex items-center justify-center gap-2">
-                                        <i class="fas fa-credit-card text-purple-400"></i>
-                                        <span class="text-sm">Online</span>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <button type="submit" id="submitBtn" class="btn-premium w-full py-3 rounded-xl font-semibold text-white mt-4">
-                            <i class="fas fa-check-circle mr-2"></i>Complete Registration
-                        </button>
-                        
+                        <button type="submit" id="submitBtn" class="btn-premium w-full py-3 rounded-xl font-semibold text-white mt-4"><i class="fas fa-arrow-right mr-2"></i>Register & Continue to Payment</button>
                         <div id="formMsg" class="hidden text-center text-sm py-2 rounded-lg"></div>
                     </form>
                 </div>
                 
-                <!-- Right: Info & Pricing -->
+                <!-- Right: Why Join + Quote -->
                 <div>
-                    <div class="bg-gradient-to-br from-indigo-600/10 to-purple-600/10 rounded-2xl p-6 mb-6">
-                        <div class="flex items-center gap-3 mb-4">
-                            <i class="fas fa-trophy text-yellow-400 text-2xl"></i>
-                            <p class="text-white font-semibold">Why Join This Camp?</p>
-                        </div>
+                    <div class="bg-gradient-to-br from-purple-600/10 to-pink-600/10 rounded-2xl p-6 mb-6">
+                        <div class="flex items-center gap-3 mb-4"><i class="fas fa-chalkboard-user text-yellow-400 text-2xl"></i><p class="text-white font-semibold">From Student to Digital Teacher</p></div>
                         <ul class="space-y-2 text-sm text-gray-300">
-                            <li><i class="fas fa-check-circle text-indigo-400 mr-2 text-xs"></i>Learn from StomCodeV – experienced student teacher & developer</li>
-                            <li><i class="fas fa-check-circle text-indigo-400 mr-2 text-xs"></i>Real CPD for your teaching career</li>
-                            <li><i class="fas fa-check-circle text-indigo-400 mr-2 text-xs"></i>Hands-on with Google Classroom, Canva, Meet</li>
-                            <li><i class="fas fa-check-circle text-indigo-400 mr-2 text-xs"></i>Certificate upon completion</li>
-                            <li><i class="fas fa-check-circle text-indigo-400 mr-2 text-xs"></i>Limited to 30 students – personal attention</li>
+                            <li><i class="fas fa-check-circle text-purple-400 mr-2 text-xs"></i>Learn practical skills you'll use NEXT term</li>
+                            <li><i class="fas fa-check-circle text-purple-400 mr-2 text-xs"></i>No boring theory — 100% hands-on</li>
+                            <li><i class="fas fa-check-circle text-purple-400 mr-2 text-xs"></i>Small groups (max 30 students)</li>
+                            <li><i class="fas fa-check-circle text-purple-400 mr-2 text-xs"></i>Trainer: TUYISENGE JC (StomCodeV) — student teacher & dev</li>
                         </ul>
                     </div>
-                    
                     <div class="glass-card p-6 text-center">
-                        <i class="fas fa-calendar-week text-indigo-400 text-3xl mb-3"></i>
-                        <p class="text-gray-300 text-sm">Starts: <span class="text-white font-semibold">Monday, July 7th 2025</span></p>
-                        <p class="text-gray-400 text-xs mt-2">Location: TTC Muhanga ICT Lab</p>
-                        <p class="text-gray-400 text-xs">Contact: <span class="text-indigo-400">+250 796 717 230</span> (WhatsApp)</p>
+                        <i class="fas fa-quote-right text-purple-400 text-2xl mb-2 opacity-50"></i>
+                        <p class="text-gray-200 text-sm italic">"The future of education is digital. Don't just watch it — lead it."</p>
+                        <p class="text-purple-300 text-xs mt-3">— StomCodeV, TTC Muhanga</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Payment Info Popup (after registration) -->
-    <div id="paymentOverlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-        <div class="glass-premium rounded-3xl p-8 max-w-md w-full animate-fade-up">
+    <!-- Payment Modal (After Registration) -->
+    <div id="paymentOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+        <div class="glass-premium rounded-3xl p-8 max-w-md w-full animate-fade-up relative-z">
             <div class="text-center">
-                <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-check-circle text-green-400 text-3xl"></i>
+                <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4"><i class="fas fa-check-circle text-green-400 text-3xl"></i></div>
+                <h3 class="text-2xl font-bold text-white mb-1">You're almost in! 🎉</h3>
+                <p class="text-gray-400 text-xs mb-5">Choose your preferred payment method to secure your spot.</p>
+                
+                <div id="paymentOptions" class="space-y-3 mb-6">
+                    <!-- MoMo Option -->
+                    <div class="glass-card p-3 cursor-pointer hover:border-purple-500 transition" onclick="selectPayment('momo')">
+                        <div class="flex items-center gap-4">
+                            <div class="payment-logo"><i class="fas fa-mobile-alt text-purple-400 text-2xl"></i></div>
+                            <div class="flex-1 text-left"><p class="text-white font-medium">MTN / Airtel Money</p><p class="text-gray-400 text-xs">Pay directly from your phone</p></div>
+                            <i class="fas fa-chevron-right text-gray-500 text-sm"></i>
+                        </div>
+                    </div>
+                    <!-- PayPal Option -->
+                    <div class="glass-card p-3 cursor-pointer hover:border-purple-500 transition" onclick="selectPayment('paypal')">
+                        <div class="flex items-center gap-4">
+                            <div class="payment-logo"><i class="fab fa-paypal text-blue-400 text-2xl"></i></div>
+                            <div class="flex-1 text-left"><p class="text-white font-medium">PayPal</p><p class="text-gray-400 text-xs">Secure online payment</p></div>
+                            <i class="fas fa-chevron-right text-gray-500 text-sm"></i>
+                        </div>
+                    </div>
+                    <!-- BK Card Option -->
+                    <div class="glass-card p-3 cursor-pointer hover:border-purple-500 transition" onclick="selectPayment('card')">
+                        <div class="flex items-center gap-4">
+                            <div class="payment-logo"><i class="fas fa-credit-card text-pink-400 text-2xl"></i></div>
+                            <div class="flex-1 text-left"><p class="text-white font-medium">BK Card (Visa/Mastercard)</p><p class="text-gray-400 text-xs">Coming in 2 months</p></div>
+                            <i class="fas fa-chevron-right text-gray-500 text-sm"></i>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="text-2xl font-bold text-white mb-2">Registration Successful! 🎉</h3>
-                <p class="text-gray-400 text-sm mb-6">Here's how to complete your payment:</p>
-                <div id="paymentDetails" class="bg-black/30 rounded-xl p-4 text-left text-sm text-gray-300 mb-6"></div>
+                
+                <div id="paymentDetails" class="hidden bg-black/40 rounded-xl p-4 text-left text-sm text-gray-300 mb-4"></div>
+                
                 <div class="flex gap-3">
-                    <a id="whatsappShare" href="#" target="_blank" class="flex-1 bg-green-600 hover:bg-green-700 py-2 rounded-xl text-white font-medium text-center transition flex items-center justify-center gap-2">
-                        <i class="fab fa-whatsapp"></i>Share
-                    </a>
-                    <button onclick="closePaymentOverlay()" class="flex-1 border border-white/20 hover:bg-white/10 py-2 rounded-xl text-white transition">
-                        Close
-                    </button>
+                    <a id="whatsappShare" href="#" target="_blank" class="flex-1 bg-green-600 hover:bg-green-700 py-2 rounded-xl text-white font-medium text-center transition"><i class="fab fa-whatsapp mr-2"></i>Share</a>
+                    <button onclick="closePaymentOverlay()" class="flex-1 border border-white/20 hover:bg-white/10 py-2 rounded-xl text-white transition">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="max-w-4xl mx-auto px-4 py-16 z-10 relative">
-        <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold text-white mb-2">Simple, Affordable Pricing</h2>
-            <p class="text-gray-400">Pay weekly or monthly – no hidden fees</p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="glass-card p-8 text-center">
-                <p class="text-gray-400 text-sm mb-2">Weekly Plan</p>
-                <p class="text-5xl font-bold text-white mb-2">500 <span class="text-lg text-gray-400">Frw</span></p>
-                <p class="text-gray-500 text-xs mb-4">per week</p>
-                <ul class="text-left text-sm text-gray-400 space-y-2 mb-6">
-                    <li><i class="fas fa-check text-indigo-400 mr-2"></i>Access to all week's classes</li>
-                    <li><i class="fas fa-check text-indigo-400 mr-2"></i>WhatsApp support group</li>
-                    <li><i class="fas fa-check text-indigo-400 mr-2"></i>Weekly assignments</li>
-                </ul>
-                <a href="#register" class="btn-outline-premium block py-2 rounded-xl text-center font-medium">Choose Plan</a>
-            </div>
-            <div class="glass-card p-8 text-center relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-gradient-to-l from-indigo-500 to-purple-500 px-4 py-1 rounded-bl-2xl text-xs font-bold text-white">BEST VALUE</div>
-                <p class="text-gray-400 text-sm mb-2">Monthly Plan</p>
-                <p class="text-5xl font-bold gradient-text mb-2">2,000 <span class="text-lg text-gray-400">Frw</span></p>
-                <p class="text-gray-500 text-xs mb-4">full month (save 0 Frw? Actually you save! 🎯)</p>
-                <ul class="text-left text-sm text-gray-400 space-y-2 mb-6">
-                    <li><i class="fas fa-check text-indigo-400 mr-2"></i>All 4 weeks of training</li>
-                    <li><i class="fas fa-check text-indigo-400 mr-2"></i>Certificate of completion</li>
-                    <li><i class="fas fa-check text-indigo-400 mr-2"></i>Final project guidance</li>
-                    <li><i class="fas fa-star text-yellow-400 mr-2"></i>Priority support</li>
-                </ul>
-                <a href="#register" class="btn-premium block py-2 rounded-xl text-center font-medium text-white">Choose Plan</a>
-            </div>
+    <!-- Why Join Section (Extra convincing) -->
+    <section id="why-join" class="max-w-5xl mx-auto px-4 py-16 z-10 relative-z">
+        <div class="text-center mb-10"><h2 class="text-3xl font-bold text-white mb-2">Why Future Teachers Choose This Camp</h2><p class="text-gray-400">Because放假 (holiday) is the best time to level up.</p></div>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="glass-card p-6 text-center"><i class="fas fa-stopwatch text-purple-400 text-3xl mb-3"></i><h3 class="text-white font-semibold mb-2">Just 1 Hour/Day</h3><p class="text-gray-400 text-sm">Respects your holiday — learn without burnout.</p></div>
+            <div class="glass-card p-6 text-center"><i class="fas fa-graduation-cap text-purple-400 text-3xl mb-3"></i><h3 class="text-white font-semibold mb-2">Practical, Not Theory</h3><p class="text-gray-400 text-sm">You'll leave with actual Google Classroom, Canva, Forms skills.</p></div>
+            <div class="glass-card p-6 text-center"><i class="fas fa-coins text-purple-400 text-3xl mb-3"></i><h3 class="text-white font-semibold mb-2">Affordable for All</h3><p class="text-gray-400 text-sm">500 Frw/week = less than a soda. Invest in your future.</p></div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="max-w-3xl mx-auto px-4 py-16 z-10 relative">
-        <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold text-white mb-2">Frequently Asked Questions</h2>
-            <p class="text-gray-400">Everything you need to know</p>
-        </div>
+    <!-- FAQ (No certificate mentioned) -->
+    <section id="faq" class="max-w-3xl mx-auto px-4 py-16 z-10 relative-z">
+        <div class="text-center mb-10"><h2 class="text-3xl font-bold text-white mb-2">Got Questions?</h2><p class="text-gray-400">We've got answers.</p></div>
         <div class="space-y-3">
-            <div class="glass-card overflow-hidden">
-                <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center">
-                    <span class="text-white font-medium">Do I need my own laptop?</span>
-                    <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
-                </button>
-                <div class="hidden px-6 pb-4 text-gray-400 text-sm">
-                    No! We provide computers at the ICT lab. Just bring your smartphone and enthusiasm.
-                </div>
-            </div>
-            <div class="glass-card overflow-hidden">
-                <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center">
-                    <span class="text-white font-medium">Can I join if I'm not an IT student?</span>
-                    <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
-                </button>
-                <div class="hidden px-6 pb-4 text-gray-400 text-sm">
-                    Absolutely! This camp is designed for beginners. You'll learn everything from scratch.
-                </div>
-            </div>
-            <div class="glass-card overflow-hidden">
-                <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center">
-                    <span class="text-white font-medium">What if I miss a day?</span>
-                    <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
-                </button>
-                <div class="hidden px-6 pb-4 text-gray-400 text-sm">
-                    Notes and recordings are shared in the WhatsApp group. You can catch up anytime.
-                </div>
-            </div>
-            <div class="glass-card overflow-hidden">
-                <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center">
-                    <span class="text-white font-medium">Will I get a certificate?</span>
-                    <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
-                </button>
-                <div class="hidden px-6 pb-4 text-gray-400 text-sm">
-                    Yes! All students who complete the camp receive a certificate of completion.
-                </div>
-            </div>
-            <div class="glass-card overflow-hidden">
-                <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center">
-                    <span class="text-white font-medium">How do I pay via Mobile Money?</span>
-                    <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
-                </button>
-                <div class="hidden px-6 pb-4 text-gray-400 text-sm">
-                    Send to MTN: 0788 123 456 or Airtel: 0785 123 456. Include your name and pay the amount based on your plan. Then WhatsApp your payment confirmation to +250 796 717 230.
-                </div>
-            </div>
+            <div class="glass-card overflow-hidden"><button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center"><span class="text-white font-medium">Do I need a laptop?</span><i class="fas fa-chevron-down text-gray-400"></i></button><div class="hidden px-6 pb-4 text-gray-400 text-sm">No! We provide computers at the ICT lab. Your smartphone is enough.</div></div>
+            <div class="glass-card overflow-hidden"><button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center"><span class="text-white font-medium">What if I miss a day?</span><i class="fas fa-chevron-down text-gray-400"></i></button><div class="hidden px-6 pb-4 text-gray-400 text-sm">Notes & recordings are shared in our WhatsApp group. Catch up anytime.</div></div>
+            <div class="glass-card overflow-hidden"><button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center"><span class="text-white font-medium">How do I pay via Mobile Money?</span><i class="fas fa-chevron-down text-gray-400"></i></button><div class="hidden px-6 pb-4 text-gray-400 text-sm">Dial *182# or use your MoMo app. Send to <strong class="text-purple-300">0796717230</strong> (TUYISENGE Jean Chrisostom). Include your name.</div></div>
+            <div class="glass-card overflow-hidden"><button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center"><span class="text-white font-medium">Is this a certified course?</span><i class="fas fa-chevron-down text-gray-400"></i></button><div class="hidden px-6 pb-4 text-gray-400 text-sm">This is a practical holiday camp focused on real skills — no paper certificate, just digital confidence.</div></div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="relative z-10 border-t border-white/10 py-8 mt-8">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <div class="flex flex-wrap justify-center gap-6 mb-4 text-sm">
-                <a href="#" class="text-gray-400 hover:text-white transition">About StomCodeV</a>
-                <a href="#" class="text-gray-400 hover:text-white transition">Contact</a>
-                <a href="#" class="text-gray-400 hover:text-white transition">Privacy</a>
-            </div>
-            <p class="text-gray-500 text-xs">© 2025 TTC Muhanga ICT Holiday Camp | Created by <span class="text-indigo-400">StomCodeV</span> – Student Teacher & Web Developer</p>
-            <p class="text-gray-600 text-xs mt-2">📍 Karumuna Village, Ntarama Sector, Bugesera District, Rwanda</p>
-        </div>
+    <footer class="relative-z border-t border-white/10 py-8 mt-8 text-center">
+        <p class="text-gray-500 text-xs">© 2025 TTC Muhanga ICT Holiday Camp | Created by <span class="text-purple-400">StomCodeV</span> (TUYISENGE Jean Chrisostom)</p>
+        <p class="text-gray-600 text-xs mt-2">📍 Karumuna, Ntarama, Bugesera | 📞 0796717230 | ✉️ tuyisengejeanchrisostome@gmail.com</p>
     </footer>
 
-    <script>
-        // Radio card styling
-        document.querySelectorAll('.radio-card').forEach(card => {
-            const radio = card.querySelector('input');
-            const div = card.querySelector('div');
-            if (radio.checked) div.classList.add('border-indigo-500', 'bg-indigo-500/10');
-            
-            radio.addEventListener('change', () => {
-                document.querySelectorAll('.radio-card div').forEach(d => {
-                    d.classList.remove('border-indigo-500', 'bg-indigo-500/10');
-                });
-                if (radio.checked) div.classList.add('border-indigo-500', 'bg-indigo-500/10');
-            });
-        });
+    <script type="module">
+        import * as THREE from 'three';
+        // Setup Scene
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x050510);
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 15;
         
-        // Toggle FAQ
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.body.appendChild(renderer.domElement);
+        
+        // --- Moving ICT-related 3D Objects ---
+        // 1. Floating digital cube (technology)
+        const geometryBox = new THREE.BoxGeometry(1.2, 1.2, 1.2);
+        const materialBox = new THREE.MeshStandardMaterial({ color: 0x8b5cf6, emissive: 0x3b0764, roughness: 0.3, metalness: 0.7 });
+        const cube = new THREE.Mesh(geometryBox, materialBox);
+        cube.position.set(-3, 1, 0);
+        scene.add(cube);
+        
+        // 2. Icosahedron representing connectivity
+        const geometryIco = new THREE.IcosahedronGeometry(0.8, 0);
+        const materialIco = new THREE.MeshStandardMaterial({ color: 0xc084fc, emissive: 0x4c1d95, wireframe: false });
+        const ico = new THREE.Mesh(geometryIco, materialIco);
+        ico.position.set(3.5, -1, -2);
+        scene.add(ico);
+        
+        // 3. Ring / Torus (digital world)
+        const geometryRing = new THREE.TorusGeometry(1, 0.2, 32, 100);
+        const materialRing = new THREE.MeshStandardMaterial({ color: 0xe879f9, emissive: 0x86198f });
+        const ring = new THREE.Mesh(geometryRing, materialRing);
+        ring.position.set(0, -2, -1);
+        scene.add(ring);
+        
+        // 4. Floating particles (data streams)
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 800;
+        const posArray = new Float32Array(particlesCount * 3);
+        for(let i = 0; i < particlesCount; i++) {
+            posArray[i*3] = (Math.random() - 0.5) * 40;
+            posArray[i*3+1] = (Math.random() - 0.5) * 20;
+            posArray[i*3+2] = (Math.random() - 0.5) * 20 - 10;
+        }
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({ size: 0.08, color: 0xa855f7, transparent: true, opacity: 0.6 });
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+        
+        // Lights
+        const ambientLight = new THREE.AmbientLight(0x404060);
+        scene.add(ambientLight);
+        const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+        dirLight.position.set(5, 10, 7);
+        scene.add(dirLight);
+        const backLight = new THREE.PointLight(0x8b5cf6, 0.5);
+        backLight.position.set(-2, 1, -5);
+        scene.add(backLight);
+        
+        // Animation variables
+        let time = 0;
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.012;
+            
+            // Move objects creatively
+            cube.rotation.x = Math.sin(time * 0.7) * 0.5;
+            cube.rotation.y = Math.cos(time * 0.5) * 0.6;
+            cube.position.y = 1 + Math.sin(time * 1.2) * 0.3;
+            
+            ico.rotation.x = time * 0.4;
+            ico.rotation.y = time * 0.6;
+            ico.position.x = 3.5 + Math.sin(time * 0.8) * 0.2;
+            
+            ring.rotation.x = time * 0.5;
+            ring.rotation.z = time * 0.3;
+            ring.position.y = -2 + Math.sin(time * 0.9) * 0.3;
+            
+            particlesMesh.rotation.y = time * 0.05;
+            particlesMesh.rotation.x = Math.sin(time * 0.2) * 0.1;
+            
+            camera.position.x += (0 - camera.position.x) * 0.03;
+            camera.position.y += (0 - camera.position.y) * 0.03;
+            camera.lookAt(0, 0, 0);
+            
+            renderer.render(scene, camera);
+        }
+        animate();
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+
+    <script>
+        // UI Functions
+        let currentStudentName = '';
+        function selectPayment(method) {
+            const detailsDiv = document.getElementById('paymentDetails');
+            const optionsDiv = document.getElementById('paymentOptions');
+            let html = '';
+            if(method === 'momo') {
+                html = `<div class="space-y-2"><p class="font-semibold text-white flex items-center gap-2"><i class="fas fa-mobile-alt text-purple-400"></i>MTN / Airtel Money</p><p>1. Dial <strong class="text-purple-300">*182#</strong> (MTN) or use Airtel Money app</p><p>2. Enter number: <strong class="text-purple-300">0796717230</strong></p><p>3. Account Name: <strong class="text-purple-300">TUYISENGE Jean Chrisostom</strong></p><p>4. Amount: <strong>500 Frw/week or 2,000 Frw/month</strong></p><p class="mt-3 text-xs text-gray-400">After payment, WhatsApp your name + screenshot to 0796717230</p></div>`;
+            } else if(method === 'paypal') {
+                html = `<div class="space-y-2"><p class="font-semibold text-white flex items-center gap-2"><i class="fab fa-paypal text-blue-400"></i>PayPal</p><p>Send to: <strong class="text-purple-300">tuyisengejeanchrisostome@gmail.com</strong></p><p>Amount: <strong>0.50 USD/week or 2.00 USD/month</strong></p><p class="text-xs text-gray-400">Include "${currentStudentName}" in the payment note.</p></div>`;
+            } else if(method === 'card') {
+                html = `<div class="text-center p-3"><i class="fas fa-credit-card text-pink-400 text-4xl mb-2"></i><p class="text-white font-semibold">BK Card / Visa / Mastercard</p><p class="text-yellow-300 text-sm mt-2">✨ Coming in 2 months!</p><p class="text-gray-400 text-xs mt-2">For now, please use MoMo or PayPal to secure your spot.</p></div>`;
+            }
+            detailsDiv.innerHTML = html;
+            detailsDiv.classList.remove('hidden');
+            optionsDiv.classList.add('hidden');
+        }
+        
+        function closePaymentOverlay() {
+            const overlay = document.getElementById('paymentOverlay');
+            overlay.classList.add('hidden');
+            overlay.classList.remove('flex');
+            document.getElementById('paymentOptions').classList.remove('hidden');
+            document.getElementById('paymentDetails').classList.add('hidden');
+        }
+        
         function toggleFaq(btn) {
             const content = btn.nextElementSibling;
             const icon = btn.querySelector('i:last-child');
@@ -573,89 +386,44 @@
             icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
         }
         
-        // Close payment overlay
-        function closePaymentOverlay() {
-            document.getElementById('paymentOverlay').classList.remove('flex');
-            document.getElementById('paymentOverlay').classList.add('hidden');
-        }
-        
-        // Registration handler
-        document.getElementById('regForm').addEventListener('submit', async (e) => {
+        // Form submission
+        document.getElementById('regForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            
             const fullname = document.getElementById('fullname').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const address = document.getElementById('address').value.trim();
             const year = document.getElementById('year').value;
-            const plan = document.querySelector('input[name="plan"]:checked').value;
-            const payment = document.querySelector('input[name="payment"]:checked').value;
+            if(!fullname || !phone || !address || !year) { alert("Please fill all required fields (*)"); return; }
             
-            if (!fullname || !phone || !address || !year) {
-                alert('Please fill all required fields');
-                return;
-            }
-            
-            const btn = document.getElementById('submitBtn');
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Processing...';
-            btn.disabled = true;
-            
-            // Save to localStorage
+            currentStudentName = fullname;
+            // Store in localStorage for potential admin view
             const registration = {
                 fullname, phone, address, year,
-                interest: document.getElementById('interest').value,
-                heard: document.getElementById('heard').value,
-                plan, payment,
-                date: new Date().toISOString(),
-                status: 'pending_payment'
+                challenge: document.getElementById('ictChallenge').value,
+                goal: document.getElementById('improvementGoal').value,
+                date: new Date().toISOString()
             };
+            let all = JSON.parse(localStorage.getItem('ttc_registrations') || '[]');
+            all.push(registration);
+            localStorage.setItem('ttc_registrations', JSON.stringify(all));
             
-            let registrations = JSON.parse(localStorage.getItem('ttc_registrations') || '[]');
-            registrations.push(registration);
-            localStorage.setItem('ttc_registrations', JSON.stringify(registrations));
-            
-            // Payment instructions
-            const instructions = {
-                'MoMo': `<p class="font-semibold text-white mb-2">📱 Mobile Money (MoMo)</p>
-                         <p>Send to <strong class="text-indigo-300">MTN: 0788 123 456</strong></p>
-                         <p>or <strong class="text-indigo-300">Airtel: 0785 123 456</strong></p>
-                         <p>Amount: ${plan === 'weekly' ? '500 Frw' : '2,000 Frw'}</p>
-                         <p class="mt-3 text-gray-400 text-xs">After payment, WhatsApp your name + screenshot to <strong>+250 796 717 230</strong></p>`,
-                'Cash': `<p class="font-semibold text-white mb-2">💵 Cash Payment</p>
-                         <p>Pay at TTC Muhanga ICT Lab on <strong>Monday 13:00</strong></p>
-                         <p>Ask for <strong>StomCodeV</strong> (Camp Coordinator)</p>
-                         <p>Amount: ${plan === 'weekly' ? '500 Frw' : '2,000 Frw'}</p>`,
-                'PayPal': `<p class="font-semibold text-white mb-2">🌐 PayPal</p>
-                           <p>Send to: <strong class="text-indigo-300">ttcmuhanga.ict@gmail.com</strong></p>
-                           <p>Amount: ${plan === 'weekly' ? '$0.50 USD' : '$2 USD'}</p>
-                           <p class="mt-3 text-gray-400 text-xs">Include your name in the payment note</p>`,
-                'Online': `<p class="font-semibold text-white mb-2">💳 Pay Online</p>
-                           <p>A payment link will be sent to your phone via SMS within 24 hours.</p>
-                           <p>Supports Visa, Mastercard & MTN MoMo</p>`
-            };
-            
-            document.getElementById('paymentDetails').innerHTML = instructions[payment] || instructions['MoMo'];
+            // Show payment modal
             document.getElementById('paymentOverlay').classList.remove('hidden');
             document.getElementById('paymentOverlay').classList.add('flex');
             
-            // WhatsApp share link
-            const shareText = encodeURIComponent(`🎓 I just registered for TTC Muhanga ICT Holiday Camp! Learn Google Classroom, Canva, Meet & more. Only 500 Frw/week. Join me! 👉 ${window.location.href}`);
+            // Setup WhatsApp share link
+            const shareText = encodeURIComponent(`🚀 I just registered for TTC Muhanga ICT Holiday Camp! Learn real digital skills for teaching. Only 500Frw/week. Join me: ${window.location.href}`);
             document.getElementById('whatsappShare').href = `https://wa.me/?text=${shareText}`;
-            
-            btn.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Complete Registration';
-            btn.disabled = false;
             
             // Reset form
             document.getElementById('regForm').reset();
         });
         
-        // Smooth scroll for anchor links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
             });
         });
     </script>
