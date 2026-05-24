@@ -2,7 +2,7 @@
 This will help student teacher's to learn ICT online
 # TTC Muhanga ICT Holiday Camp
 
-**Live Site:** [https://your-site-name.netlify.app](https://your-site-name.netlify.app)
+**Live Site:** [https://ttc-muhanga-ict-holiday-camp.netlify.app/](https://ttc-muhanga-ict-holiday-camp.netlify.app/)
 
 ## Overview
 A professional landing page for TTC Muhanga's ICT holiday camp targeting Year 1 & Year 2 student teachers. The camp teaches practical digital skills including Google Classroom, Canva, Google Meet, and mobile productivity.
