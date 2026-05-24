@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ttc-muhanga-ict-holiday-camp.netlify.app/sitemap.xml
+
+# Prevent crawling of admin or private areas (none for this site)
+# Disallow: /private/
+
+# Crawl delay - be nice to search engines
+Crawl-delay: 5
